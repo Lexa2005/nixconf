@@ -21,7 +21,7 @@
   ### ===== СЕТЬ =====
   networking.hostName = "dalenix-pc";
   networking.networkmanager.enable = true;
-  
+
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 3080 22 ]; # 3080 для GNS3, 22 для SSH (если необходимо)
@@ -57,7 +57,7 @@
   };
 
   ### ===== ДИСПЛЕЙ И РАБОЧЕЕ ОКРУЖЕНИЕ =====
-  
+
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
@@ -101,6 +101,7 @@
     git
     fastfetch
     micro
+    irqbalance
 
     # --- Графика и окружение ---
     mesa
@@ -177,7 +178,7 @@
 
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
-    
+
   ### ===== УПРАВЛЕНИЕ GPU =====
   programs.corectrl = {
     enable = true;
@@ -195,9 +196,6 @@
   };
 
   services.irqbalance.enable = true;
-
-  ### ===== МИКРОКОД ЦПУ =====
-  hardware.cpu.intel.updateMicrocode = true;
 
   ### ===== ТОЧКИ МОНТИРОВАНИЯ =====
   fileSystems."/mnt/sda1" = {
@@ -229,9 +227,6 @@
 
   # Включаем службу libvirtd
   virtualisation.libvirtd.enable = true;
-
-  # Загружаем модули ядра для поддержки виртуализации
-  boot.kernelModules = [ "kvm-intel" ];
 
   # Включаем поддержку Wireshark
   programs.wireshark.enable = true;
