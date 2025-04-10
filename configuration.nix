@@ -56,6 +56,10 @@
     variant = "";
   };
 
+  hardware.amdgpu.amdvlk = {
+  enable = true;
+  };
+
   ### ===== ДИСПЛЕЙ И РАБОЧЕЕ ОКРУЖЕНИЕ =====
 
   services.displayManager.sddm.enable = true;
@@ -80,6 +84,10 @@
     extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "wireshark" ];
     packages = with pkgs; [
 
+      vesktop
+      #discord
+      telegram-desktop
+
       # --- Редакторы и офис ---
       kdePackages.kate
       thunderbird
@@ -102,15 +110,19 @@
     fastfetch
     micro
     irqbalance
+    p7zip
+    p7zip-rar
+    vlc
+    nftables
 
     # --- Графика и окружение ---
     mesa
     gparted
     gnome-disk-utility
-    telegram-desktop
     xorg.libxcvt
-    corectrl
     upscayl
+    krita
+    gimp
 
     # --- VPN и сеть ---
     nekoray
@@ -135,15 +147,14 @@
     SDL2
     sqlite
     xml2
-    zulu17
     zulu
     virt-manager
     qemu_full
 
     # --- Утилиты и оформление ---
     flatpak
-    uwufetch
     pfetch
+    ufetch
     iucode-tool
     glxinfo
 
@@ -155,6 +166,10 @@
 
     # --- 32-битная поддержка ---
     pkgsi686Linux.gperftools
+
+    tcpdump
+    dnsutils
+    qbittorrent
   ];
 
   ### ===== ШРИФТЫ =====
@@ -216,6 +231,7 @@
   ### ===== ВЕРСИЯ СОСТОЯНИЯ СИСТЕМЫ =====
   system.stateVersion = "24.11";
 
+  ### ===== VIRTUALBOX =====
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "dalenix" ];
   virtualisation.virtualbox.host.enableExtensionPack = true;
